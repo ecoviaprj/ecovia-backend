@@ -5,14 +5,15 @@ from app.schemas import eco as eco_schemas
 from typing import List, Optional, Union
 from app.database import get_db
 import shutil, os
+from app.schemas.eco import EcoTaskCreate, EcoTaskResponse
 
 router = APIRouter(
     prefix="/eco",
     tags=["Eco Tasks"]
 )
 
-@router.post("/submit", response_model=Union[eco_schemas.EcoTaskOut,dict])
-def create_eco_task(task: eco_schemas.EcoTaskCreate, db: Session = Depends(database.get_db)):
+@router.post("/submit", response_model=EcoTaskResponse)
+def create_eco_task_route(task: EcoTaskCreate, db: Session = Depends(get_db)):
     return crud.eco.create_eco_task(db, task)
 
 @router.get("/tasks/{user_id}", response_model=list[eco_schemas.EcoTaskOut])

@@ -43,3 +43,7 @@ class EcoActionOut(EcoActionBase):
 
     class Config:
         orm_mode = True
+
+class EcoTaskResponse(BaseModel):
+    eco_task: EcoTaskOut 
+    eco_coins_awarded: int
