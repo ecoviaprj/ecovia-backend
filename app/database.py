@@ -1,9 +1,9 @@
+import os
 from sqlalchemy import create_engine
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import sessionmaker
 
-SQLALCHEMY_DATABASE_URL = "mysql+pymysql://root:Gifty%402411@localhost/ecovia"
-#use you own mysql credentials
+SQLALCHEMY_DATABASE_URL = os.getenv("DATABASE_URL")
 
 engine = create_engine(SQLALCHEMY_DATABASE_URL)
 
@@ -17,9 +17,3 @@ def get_db():
         yield db
     finally:
         db.close()
-
-
-
-
-
-
