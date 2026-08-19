@@ -4,3 +4,7 @@ pydantic==1.10.13
 python-multipart==0.0.6
 mysql-connector-python==8.1.0
 python-dotenv==1.0.0
+--extra-index-url https://download.pytorch.org/whl/cpu
+pydantic==2.11.7
+# Instead of pydantic_core, use:
+pydantic-core==2.18.4
